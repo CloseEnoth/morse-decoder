@@ -50,8 +50,8 @@ function decode(expr) {
   .map(item => cut(item,10)) //first word -> [ [10Symbols], [same], [same]... ]
   .map(item => item
     .map(el => cut(el, 2) //10 symbols -> [ [2symbols], [2symbols], [2symbols], [2symbols]]
-      .map(el => NUM_MORSE[el]) // 2symbols -> '' or '.' or '-'
-      .filter(el => el !== '') // 2symbols clear '' -> '.' or '-'
+      .map(el => NUM_MORSE[el]) // 2symbols -> [ '00', '10', '11'... ] -> [ '', '.', '-'... ]
+      .filter(el => el !== '') // 2symbols delete '' -> '.' or '-'
       .join(''))// return to 10 symbols
     .map(item => MORSE_TABLE[item])// 
     )
